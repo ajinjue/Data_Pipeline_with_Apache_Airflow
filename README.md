@@ -27,6 +27,14 @@ The given data in S3 bucket is in the US West AWS Region. I was expected to copy
 3. Copy the data from the home cloudshell directory to my own bucket
    - aws s3 cp ~/log-data/ s3://akwayaga/log-data/ --recursive
    - aws s3 cp ~/song-data/ s3://akwayaga/song-data/ --recursive
+  
+## Project Structure
+The project package contains three major components for the project:
+- The dags folder has all the imports and task definitions, and the task dependencies.
+- The operators folder in plugins contains the custom operators implementations.
+- The helpers folder in plugins contains a class for the SQL transformations.
+
+
 
 
 
