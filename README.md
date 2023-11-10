@@ -14,9 +14,17 @@ The source data resides in S3 and needs to be processed in Sparkify's data wareh
 ## Project Instructions
 ### Datasets
 For this project, I was given the links of two datasets. Here are the s3 links for each:
-
 - Log data: s3://udacity-dend/log_data
 - Song data: s3://udacity-dend/song_data
+
+### Copy S3 Data
+The given data in S3 bucket is in the US West AWS Region. I was expected to copy the data to my own S3 bucket, so Redshift can access the bucket. I transferred the data to my own S3 bucket using AWS CloudShell in the following steps:-
+- Create my own S3 bucket:
+    aws s3 mb s3://akwayaga/
+- Copy the data from the project's bucket to the home cloudshell directory:
+    aws s3 cp s3://udacity-dend/log-data/ ~/log-data/ --recursive
+    aws s3 cp s3://udacity-dend/song-data/ ~/song-data/ --recursive
+
 
 
 ## Project Overview
