@@ -34,7 +34,13 @@ The project package contains three major components for the project:
 - The operators folder in plugins contains the custom operators implementations.
 - The helpers folder in plugins contains a class for the SQL transformations.
 
-
+### Configuring the DAG
+In the DAG, I added **default parameters** such that it meets the following criteria:
+- The DAG does not have dependencies on past runs
+- On failure, the task are retried 3 times
+- Retries happen every 5 minutes
+- Catchup is turned off
+- Do not email on retry
 
 
 
