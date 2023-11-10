@@ -42,6 +42,14 @@ In the DAG, I added **default parameters** such that it meets the following crit
 - Catchup is turned off
 - Do not email on retry
 
+### Building the operators
+To complete the project, I needed to build four different custom operators to stage the data, transform the data, and run checks on data quality. 
+#### Stage Operator
+The stage operator is expected to be able to load **any** JSON-formatted files from S3 to Amazon Redshift. The operator creates and runs a SQL COPY statement based on the parameters provided. The operator's parameters should specify where in S3 the file is loaded and what is the target table. The parameters should be used to distinguish between JSON files. Another important requirement of the stage operator is containing a templated field that allows it to load timestamped files from S3 based on the execution time and run backfills.
+#### Fact and Dimension Operators
+With dimension and fact operators, I utilizes SQL queries in the helpers class to run data transformations. Most of the logic is within the SQL transformations, and the operator is expected to take as input a SQL statement and target database on which to run the query against. I also defined a target table that will contain the results of the transformation.
+Dimension loads are often done with the truncate-insert pattern, where the target table is emptied before the load. Thus, I could also have a parameter that allows switching between insert modes when loading dimensions. Fact tables are usually so massive that they should only allow append type functionality.
+
 
 
 ## Project Overview
