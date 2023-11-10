@@ -24,6 +24,9 @@ The given data in S3 bucket is in the US West AWS Region. I was expected to copy
 2. Copy the data from the project's bucket to the home cloudshell directory:
    - aws s3 cp s3://udacity-dend/log-data/ ~/log-data/ --recursive
    - aws s3 cp s3://udacity-dend/song-data/ ~/song-data/ --recursive
+3. Copy the data from the home cloudshell directory to my own bucket
+   - aws s3 cp ~/log-data/ s3://akwayaga/log-data/ --recursive
+   - aws s3 cp ~/song-data/ s3://akwayaga/song-data/ --recursive
 
 
 
