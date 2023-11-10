@@ -49,8 +49,8 @@ The stage operator is expected to be able to load **any** JSON-formatted files f
 #### Fact and Dimension Operators
 With dimension and fact operators, I utilizes SQL queries in the helpers class to run data transformations. Most of the logic is within the SQL transformations, and the operator is expected to take as input a SQL statement and target database on which to run the query against. I also defined a target table that will contain the results of the transformation.
 Dimension loads are often done with the truncate-insert pattern, where the target table is emptied before the load. Thus, I could also have a parameter that allows switching between insert modes when loading dimensions. Fact tables are usually so massive that they should only allow append type functionality.
-
-
+#### Data Quality Operator
+The final operator to create is the data quality operator, which runs checks on the data itself. The operator's main functionality is to receive one or more SQL based test cases along with the expected results and execute the tests. For each test, the test result and expected result need to be checked, and if there is no match, the operator should raise an exception, and the task should retry and fail eventually. For example, one test could be a SQL statement that checks if a certain column contains NULL values by counting all the rows that have NULL in the column. We do not want to have any NULLs, so the expected result would be 0, and the test would compare the SQL statement's outcome to the expected result.
 
 ## Project Overview
 This project introduced me to the core concepts of Apache Airflow. To complete the project, I needed to create my own custom operators to perform tasks such as staging the data, filling the data warehouse, and running checks on the data as the final step.
