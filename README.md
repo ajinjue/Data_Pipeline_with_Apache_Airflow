@@ -15,8 +15,8 @@ The source data resides in S3 and needs to be processed in Sparkify's data wareh
 ### Datasets
 For this project, I was given the links of two datasets. Here are the s3 links for each:
 
-Log data: s3://udacity-dend/log_data
-Song data: s3://udacity-dend/song_data
+- Log data: s3://udacity-dend/log_data
+- Song data: s3://udacity-dend/song_data
 
 
 ## Project Overview
