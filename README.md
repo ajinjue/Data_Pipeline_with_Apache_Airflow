@@ -11,6 +11,14 @@ The source data resides in S3 and needs to be processed in Sparkify's data wareh
 - I created and configured Redshift Serverless in AWS.
 - I connected Airflow and AWS by setting up AWS credentials into Airflow using my AWS access key and secret access key.
 
+## Project Instructions
+### Datasets
+For this project, I was given the links of two datasets. Here are the s3 links for each:
+
+Log data: s3://udacity-dend/log_data
+Song data: s3://udacity-dend/song_data
+
+
 ## Project Overview
 This project introduced me to the core concepts of Apache Airflow. To complete the project, I needed to create my own custom operators to perform tasks such as staging the data, filling the data warehouse, and running checks on the data as the final step.
 
