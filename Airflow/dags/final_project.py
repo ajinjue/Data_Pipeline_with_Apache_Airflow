@@ -104,20 +104,7 @@ def final_project():
     end_operator = EmptyOperator(task_id='End_execution')
 
     # set task dependencies
-    start_operator >> stage_events_to_redshift
-    start_operator >> stage_songs_to_redshift
-    start_operator >> create_tables
-    stage_events_to_redshift >> load_songplays_table
-    stage_songs_to_redshift >> load_songplays_table
-    load_songplays_table << create_tables
-    load_songplays_table >> load_user_dimension_table
-    load_songplays_table >> load_song_dimension_table
-    load_songplays_table >> load_artist_dimension_table
-    load_songplays_table >> load_time_dimension_table
-    load_user_dimension_table >> run_quality_checks
-    load_song_dimension_table >> run_quality_checks
-    load_artist_dimension_table >> run_quality_checks
-    load_time_dimension_table >> run_quality_checks
-    run_quality_checks >> end_operator
+    start_operator >> [stage_events_to_redshift, stage_songs_to_redshift, create_tables] >> load_songplays_table 
+    load_songplays_table >> [load_user_dimension_table, load_song_dimension_table, load_artist_dimension_table, load_time_dimension_table] >> run_quality_checks
 
 final_project_dag = final_project()
